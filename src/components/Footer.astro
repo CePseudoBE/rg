@@ -1,0 +1,25 @@
+---
+import { business } from '../data/business';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-ice-100 bg-white">
+	<div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 px-5 py-9 text-sm text-slate-500 sm:flex-row">
+		<div class="flex items-center gap-3">
+			<img
+				src="/assets/logo.jpeg"
+				alt=""
+				width="32"
+				height="32"
+				class="h-8 w-8 rounded-md object-cover ring-1 ring-ice-100"
+			/>
+			<span>
+				<strong class="font-semibold text-ice-900">{business.name}</strong> · {business.city}, {
+					business.province
+				}
+			</span>
+		</div>
+		<p>© {year} {business.name}. Todos los derechos reservados.</p>
+	</div>
+</footer>

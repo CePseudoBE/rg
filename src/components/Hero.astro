@@ -1,0 +1,65 @@
+---
+import { business, mapsHref } from '../data/business';
+import PhoneIcon from './icons/PhoneIcon.astro';
+import ClockIcon from './icons/ClockIcon.astro';
+---
+
+<section id="inicio" class="relative overflow-hidden bg-gradient-to-b from-ice-50 via-white to-white">
+	<div class="pointer-events-none absolute -left-32 -top-32 h-80 w-80 rounded-full bg-ice-200/45 blur-3xl"></div>
+	<div class="pointer-events-none absolute -right-20 top-24 h-80 w-80 rounded-full bg-cyan-100/55 blur-3xl"></div>
+
+	<div class="relative mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 md:grid-cols-[1.05fr_0.95fr] md:py-28">
+		<div data-animate>
+			<p class="mb-5 inline-flex items-center gap-2 rounded-full border border-ice-200 bg-white/70 px-3 py-1 text-xs font-medium uppercase tracking-wider text-ice-700">
+				<span class="h-1.5 w-1.5 rounded-full bg-ice-500"></span>
+				{business.city} · {business.province}
+			</p>
+			<h1 class="text-balance text-4xl font-bold leading-[1.1] tracking-tight text-ice-950 sm:text-5xl">
+				Insumos, herramientas y repuestos para <span class="text-ice-600">refrigeración</span> y aire
+				acondicionado
+			</h1>
+			<p class="mt-6 max-w-lg text-lg leading-relaxed text-slate-600">
+				Productos de calidad para la instalación, el mantenimiento y la reparación de tus equipos.
+				Atención cercana y asesoramiento de quien conoce el rubro.
+			</p>
+			<div class="mt-9 flex flex-wrap items-center gap-3">
+				<a
+					href={business.phoneHref}
+					class="inline-flex items-center gap-2 rounded-full bg-ice-600 px-6 py-3 text-sm font-semibold text-white shadow-sm shadow-ice-600/25 transition-all hover:bg-ice-700 hover:shadow-lg hover:shadow-ice-600/25"
+				>
+					<PhoneIcon />
+					Llamar al {business.phone}
+				</a>
+				<a
+					href={mapsHref}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="inline-flex items-center gap-2 rounded-full border border-ice-200 bg-white px-6 py-3 text-sm font-semibold text-ice-800 transition-colors hover:border-ice-300 hover:bg-ice-50"
+				>
+					Cómo llegar
+					<span aria-hidden="true">→</span>
+				</a>
+			</div>
+		</div>
+
+		<div data-animate class="relative">
+			<div class="absolute inset-0 -rotate-3 rounded-[2rem] bg-gradient-to-tr from-ice-200/60 to-cyan-100/40"></div>
+			<div class="relative overflow-hidden rounded-[2rem] bg-white p-6 shadow-xl shadow-ice-900/10 ring-1 ring-ice-100">
+				<img
+					src="/assets/logo.jpeg"
+					alt={`Logo de ${business.name}`}
+					class="mx-auto aspect-square w-full max-w-md rounded-2xl bg-ice-50 object-contain"
+				/>
+			</div>
+			<div class="absolute -bottom-5 -left-5 hidden items-center gap-3 rounded-2xl bg-white/95 px-4 py-3 shadow-lg shadow-ice-900/10 ring-1 ring-ice-100 backdrop-blur sm:flex">
+				<span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-ice-50 text-ice-600">
+					<ClockIcon />
+				</span>
+				<div class="text-xs leading-tight text-slate-600">
+					<p class="font-semibold text-ice-950">Lun a Vie · 9 a 19 h</p>
+					<p>Sábados · 9 a 17 h</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

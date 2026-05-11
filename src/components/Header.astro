@@ -1,0 +1,47 @@
+---
+import { business } from '../data/business';
+import PhoneIcon from './icons/PhoneIcon.astro';
+
+const links = [
+	{ href: '#servicios', label: 'Servicios' },
+	{ href: '#productos', label: 'Productos' },
+	{ href: '#visitanos', label: 'Visitanos' },
+];
+---
+
+<header
+	class="sticky top-0 z-50 border-b border-ice-100/80 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/65"
+>
+	<div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3">
+		<a href="#inicio" class="flex items-center gap-3">
+			<img
+				src="/assets/logo.jpeg"
+				alt={business.name}
+				width="40"
+				height="40"
+				class="h-10 w-10 rounded-lg object-cover ring-1 ring-ice-200"
+			/>
+			<span class="text-lg font-semibold tracking-tight text-ice-950">
+				RG <span class="text-ice-600">Refrigeración</span>
+			</span>
+		</a>
+
+		<nav class="hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex">
+			{
+				links.map((link) => (
+					<a href={link.href} class="transition-colors hover:text-ice-700">
+						{link.label}
+					</a>
+				))
+			}
+		</nav>
+
+		<a
+			href={business.phoneHref}
+			class="inline-flex items-center gap-2 rounded-full bg-ice-600 px-4 py-2 text-sm font-semibold text-white shadow-sm shadow-ice-600/25 transition-all hover:bg-ice-700 hover:shadow-md hover:shadow-ice-600/30"
+		>
+			<PhoneIcon />
+			Llamar
+		</a>
+	</div>
+</header>

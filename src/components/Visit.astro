@@ -1,0 +1,92 @@
+---
+import { business, mapsHref, openingHours } from '../data/business';
+import PhoneIcon from './icons/PhoneIcon.astro';
+import MapPinIcon from './icons/MapPinIcon.astro';
+import ClockIcon from './icons/ClockIcon.astro';
+---
+
+<section id="visitanos" class="mx-auto max-w-6xl px-5 py-20 md:py-24">
+	<div class="grid gap-12 md:grid-cols-2">
+		<div data-animate>
+			<h2 class="text-3xl font-bold tracking-tight text-ice-950 sm:text-4xl">Visitanos</h2>
+			<p class="mt-4 text-slate-600">
+				Te esperamos en el local. También podés llamarnos para consultas, presupuestos y pedidos.
+			</p>
+
+			<dl class="mt-9 space-y-7">
+				<div class="flex gap-4">
+					<dt class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-ice-50 text-ice-600">
+						<MapPinIcon />
+					</dt>
+					<dd>
+						<p class="text-xs font-semibold uppercase tracking-wider text-ice-700">Dirección</p>
+						<p class="mt-1 text-slate-700">{business.address}</p>
+						<a
+							href={mapsHref}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-ice-600 transition-colors hover:text-ice-700"
+						>
+							Cómo llegar <span aria-hidden="true">→</span>
+						</a>
+					</dd>
+				</div>
+
+				<div class="flex gap-4">
+					<dt class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-ice-50 text-ice-600">
+						<PhoneIcon />
+					</dt>
+					<dd>
+						<p class="text-xs font-semibold uppercase tracking-wider text-ice-700">Teléfono</p>
+						<a
+							href={business.phoneHref}
+							class="mt-1 inline-block text-lg font-semibold text-slate-800 transition-colors hover:text-ice-700"
+						>
+							{business.phone}
+						</a>
+					</dd>
+				</div>
+			</dl>
+		</div>
+
+		<div
+			data-animate
+			class="rounded-2xl border border-ice-100 bg-gradient-to-b from-ice-50 to-white p-7 shadow-sm shadow-ice-900/5"
+		>
+			<div class="flex items-center gap-3">
+				<span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white text-ice-600 ring-1 ring-ice-100">
+					<ClockIcon />
+				</span>
+				<h3 class="text-lg font-semibold text-ice-950">Horario de atención</h3>
+			</div>
+
+			<ul class="mt-6 divide-y divide-ice-100">
+				{
+					openingHours.map((h, i) => (
+						<li data-day={i} class="flex items-center justify-between gap-3 py-2.5 text-sm">
+							<span class="day-label font-medium text-slate-700">
+								{h.day}
+								<span
+									data-today
+									hidden
+									class="ml-2 rounded-full bg-ice-600 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white"
+								>
+									Hoy
+								</span>
+							</span>
+							<span class={h.closed ? 'font-medium text-rose-500' : 'text-slate-600'}>{h.time}</span>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</div>
+</section>
+
+<script>
+	// Resalta el día actual en el horario. Lista en orden lun…dom → (getDay() + 6) % 7
+	const todayPos = (new Date().getDay() + 6) % 7;
+	const row = document.querySelector(`[data-day="${todayPos}"]`);
+	row?.querySelector<HTMLElement>('[data-today]')?.removeAttribute('hidden');
+	row?.querySelector<HTMLElement>('.day-label')?.classList.add('text-ice-800');
+</script>

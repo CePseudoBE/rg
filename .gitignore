@@ -1,0 +1,66 @@
+# build output
+dist/
+.output/
+
+# generated types & Astro cache
+.astro/
+
+# dependencies
+node_modules/
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+# logs & debug
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# environment variables
+.env
+.env.*
+!.env.example
+
+# caches & coverage
+.cache/
+.eslintcache
+.stylelintcache
+coverage/
+*.lcov
+.nyc_output/
+.vite/
+.vitest/
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# editors / IDEs
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+*.code-workspace
+*.swp
+*.swo
+*~
+
+# misc
+*.tsbuildinfo
+.vercel
+.netlify

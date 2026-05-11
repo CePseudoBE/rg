@@ -1,0 +1,51 @@
+---
+import WrenchIcon from './icons/WrenchIcon.astro';
+import RefreshIcon from './icons/RefreshIcon.astro';
+import CogIcon from './icons/CogIcon.astro';
+
+const services = [
+	{
+		title: 'Instalación',
+		text: 'Insumos y herramientas para montar equipos de refrigeración y aire acondicionado en condiciones.',
+		Icon: WrenchIcon,
+	},
+	{
+		title: 'Mantenimiento',
+		text: 'Repuestos originales y alternativos para que tus equipos sigan rindiendo todo el año.',
+		Icon: RefreshIcon,
+	},
+	{
+		title: 'Reparación',
+		text: 'Todo lo necesario para diagnosticar y arreglar fallas, con asesoramiento real de quien sabe del rubro.',
+		Icon: CogIcon,
+	},
+];
+---
+
+<section id="servicios" class="mx-auto max-w-6xl px-5 py-20 md:py-24">
+	<div class="mx-auto max-w-2xl text-center" data-animate>
+		<h2 class="text-3xl font-bold tracking-tight text-ice-950 sm:text-4xl">Lo que hacemos</h2>
+		<p class="mt-4 text-slate-600">
+			Todo lo que necesitás para que tus equipos de frío y climatización funcionen como el primer
+			día.
+		</p>
+	</div>
+
+	<div class="mt-14 grid gap-6 sm:grid-cols-3">
+		{
+			services.map(({ title, text, Icon }, i) => (
+				<article
+					data-animate
+					style={`transition-delay:${i * 110}ms`}
+					class="group rounded-2xl border border-ice-100 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-ice-200 hover:shadow-lg hover:shadow-ice-900/5"
+				>
+					<div class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-ice-50 text-ice-600 transition-colors duration-300 group-hover:bg-ice-600 group-hover:text-white">
+						<Icon />
+					</div>
+					<h3 class="text-lg font-semibold text-ice-950">{title}</h3>
+					<p class="mt-2 text-sm leading-relaxed text-slate-600">{text}</p>
+				</article>
+			))
+		}
+	</div>
+</section>

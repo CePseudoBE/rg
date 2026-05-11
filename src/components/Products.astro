@@ -1,0 +1,46 @@
+---
+import { business, productImages } from '../data/business';
+import PhoneIcon from './icons/PhoneIcon.astro';
+
+// Se duplica la lista para que el marquee haga un bucle continuo (la animación traslada -50%).
+const loop = [...productImages, ...productImages];
+---
+
+<section id="productos" class="overflow-hidden bg-ice-950 py-20 text-white md:py-24">
+	<div class="mx-auto max-w-6xl px-5" data-animate>
+		<div class="flex flex-wrap items-end justify-between gap-5">
+			<div>
+				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Nuestros productos</h2>
+				<p class="mt-4 max-w-xl text-ice-200">
+					Insumos, herramientas y repuestos originales y alternativos para refrigeración y
+					climatización. ¿Buscás algo puntual? Consultanos stock y precio.
+				</p>
+			</div>
+			<a
+				href={business.phoneHref}
+				class="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/10"
+			>
+				<PhoneIcon />
+				Consultar stock
+			</a>
+		</div>
+	</div>
+
+	<div class="marquee mt-14">
+		<div class="marquee__track">
+			{
+				loop.map((src, i) => (
+					<div class="mr-5 aspect-square w-44 shrink-0 overflow-hidden rounded-2xl bg-white/5 ring-1 ring-white/10 sm:w-56">
+						<img
+							src={src}
+							alt={`Producto disponible en ${business.name}`}
+							loading={i < 8 ? 'eager' : 'lazy'}
+							decoding="async"
+							class="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+						/>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>
