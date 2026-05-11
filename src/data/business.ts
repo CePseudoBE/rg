@@ -1,5 +1,9 @@
-/** URL de producción del sitio. ⚠️ Reemplazá por el dominio real (afecta canonical, sitemap y JSON-LD). */
-export const SITE_URL = 'https://rgrefrigeracion.com.ar';
+/**
+ * URL de producción por defecto. En Cloudflare Pages podés sobrescribirla con la
+ * variable de entorno `SITE_URL` (ver `astro.config.ts`) — así, al cambiar de dominio,
+ * no hace falta tocar el código: solo actualizar la variable y redeployar.
+ */
+export const SITE_URL = process.env.SITE_URL ?? 'https://rg-d5v.pages.dev';
 
 export const business = {
 	name: 'RG Refrigeración',
